@@ -102,25 +102,33 @@ function soundSensor () {
         music.playMelody("A A A A A A A A ", 160)
     }
 }
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    hummingbird.setRotationServo(FourPort.One, 100)
-    hummingbird.setRotationServo(FourPort.Two, 100)
-})
 function distanceSensor () {
     if (hummingbird.getSensor(SensorType.Distance, ThreePort.One) <= 5) {
         hummingbird.setRotationServo(FourPort.One, -100)
         hummingbird.setRotationServo(FourPort.Two, -100)
-        basic.pause(5000)
+        basic.pause(2500)
         hummingbird.setRotationServo(FourPort.One, 0)
         hummingbird.setRotationServo(FourPort.Two, 0)
     }
 }
-hummingbird.setLED(ThreePort.One, 0)
+hummingbird.setRotationServo(FourPort.One, 100)
+hummingbird.setRotationServo(FourPort.Two, 100)
 hummingbird.setPositionServo(FourPort.Three, 0)
 hummingbird.setPositionServo(FourPort.Four, 0)
 hummingbird.startHummingbird()
 Lights()
+basic.pause(5000)
+hummingbird.setRotationServo(FourPort.One, 100)
+hummingbird.setRotationServo(FourPort.Two, -100)
+basic.pause(100)
+hummingbird.setRotationServo(FourPort.One, 100)
+hummingbird.setRotationServo(FourPort.Two, 100)
+basic.pause(2000)
+hummingbird.setRotationServo(FourPort.One, 100)
+hummingbird.setRotationServo(FourPort.Two, -100)
 basic.forever(function () {
+    distanceSensor()
+    soundSensor()
     puase()
 })
 loops.everyInterval(100, function () {
