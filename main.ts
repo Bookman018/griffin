@@ -1,10 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-    hummingbird.setRotationServo(FourPort.One, 100)
-    hummingbird.setRotationServo(FourPort.Two, -100)
-    basic.pause(1000)
-    hummingbird.setRotationServo(FourPort.One, 0)
-    hummingbird.setRotationServo(FourPort.Two, 0)
-})
 function Lights () {
     hummingbird.setTriLED(
     TwoPort.One,
@@ -70,13 +63,6 @@ function robotScreen () {
         . # # # .
         `)
 }
-input.onButtonPressed(Button.B, function () {
-    hummingbird.setRotationServo(FourPort.One, -100)
-    hummingbird.setRotationServo(FourPort.Two, 100)
-    basic.pause(1000)
-    hummingbird.setRotationServo(FourPort.One, 0)
-    hummingbird.setRotationServo(FourPort.Two, 0)
-})
 function puase () {
     hummingbird.setTriLED(
     TwoPort.One,
@@ -111,12 +97,12 @@ function distanceSensor () {
         hummingbird.setRotationServo(FourPort.Two, 0)
     }
 }
-hummingbird.setRotationServo(FourPort.One, 100)
-hummingbird.setRotationServo(FourPort.Two, 100)
+hummingbird.startHummingbird()
 hummingbird.setPositionServo(FourPort.Three, 0)
 hummingbird.setPositionServo(FourPort.Four, 0)
-hummingbird.startHummingbird()
 Lights()
+hummingbird.setRotationServo(FourPort.One, 100)
+hummingbird.setRotationServo(FourPort.Two, 100)
 basic.pause(5000)
 hummingbird.setRotationServo(FourPort.One, 100)
 hummingbird.setRotationServo(FourPort.Two, -100)
